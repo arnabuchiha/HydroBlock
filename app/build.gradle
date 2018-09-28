@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -26,6 +30,8 @@ dependencies {
     implementation 'com.orhanobut:hawk:2.0.1'
     implementation 'com.android.support:customtabs:27.1.1'
     implementation 'com.android.support:design:27.1.1'
+    implementation 'com.ramotion.fluidslider:fluid-slider:0.3.0'
+    implementation 'com.android.support:support-v4:27.1.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

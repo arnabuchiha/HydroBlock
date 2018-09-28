@@ -29,7 +29,8 @@ public class navigate extends AppCompatActivity {
                 case R.id.navigation_buy:
                     return true;
                 case R.id.navigation_sell:
-                    return true;
+                    fragment=new sell();
+                    break;
                 case R.id.navigation_profile:
 
                     return true;

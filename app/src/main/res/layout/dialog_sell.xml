@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="341dp"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp">
+
+    <Button
+        android:id="@+id/sell_button"
+        android:layout_width="78dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="149dp"
+        android:background="@drawable/roundedbutton"
+        android:text="SELL"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="13sp" />
+
+    <com.ramotion.fluidslider.FluidSlider
+        android:id="@+id/slider"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:elevation="2dp"
+        app:bar_color="#03A9F4"
+        app:size="small" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Slide the amount you want to sell"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/slider"
+        android:layout_marginTop="114dp"
+        android:text="Current Price:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/slider"
+        android:layout_alignTop="@+id/textView4"
+        android:text="Rs.5 per litre"
+        android:textSize="16sp" />
+
+</RelativeLayout>
