@@ -27,13 +27,15 @@ public class navigate extends AppCompatActivity {
             Fragment fragment=null;
             switch (item.getItemId()) {
                 case R.id.navigation_buy:
-                    return true;
+                    fragment=new BuyerFragment();
+                    break;
                 case R.id.navigation_sell:
-                    return true;
+                    fragment=new SellerFragment();
+                    break;
                 case R.id.navigation_profile:
-
-                    return true;
-            }
+                    fragment=new ProfileFragment();
+                    break;
+                    }
             return loadFragment(fragment);
         }
     };
@@ -44,6 +46,7 @@ public class navigate extends AppCompatActivity {
         setContentView(R.layout.activity_navigate);
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        loadFragment(new BuyerFragment());
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
         DatabaseReference ref=databaseReference.child("user").child(user.getUid());
@@ -71,6 +74,7 @@ public class navigate extends AppCompatActivity {
         }
         return false;
     }
+
 
 
 }
