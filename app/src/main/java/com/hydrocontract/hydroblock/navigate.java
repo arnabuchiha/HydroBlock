@@ -30,7 +30,10 @@ public class navigate extends AppCompatActivity {
                     fragment=new BuyerFragment();
                     break;
                 case R.id.navigation_sell:
+<<<<<<< HEAD
                     fragment=new SellerFragment();
+=======
+>>>>>>> 3abddca20596df45cfc9ddbb9ce2e200de92808c
                     fragment=new sell();
                     break;
                 case R.id.navigation_profile:
