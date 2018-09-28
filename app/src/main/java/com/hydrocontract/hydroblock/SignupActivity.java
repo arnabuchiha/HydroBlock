@@ -35,18 +35,18 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
-        email=findViewById(R.id.email1);
-        username=findViewById(R.id.username);
-        password=findViewById(R.id.password1);
-        meter_id=findViewById(R.id.meter_id);
-        signup=findViewById(R.id.signup1);
+        email = findViewById(R.id.email1);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password1);
+        meter_id = findViewById(R.id.meter_id);
+        signup = findViewById(R.id.signup1);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                Log.d(TAG, "onDataChange: Added information to database: "+dataSnapshot.getValue());
+                Log.d(TAG, "onDataChange: Added information to database: " + dataSnapshot.getValue());
             }
 
             @Override
@@ -60,27 +60,24 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user!=null){
+                if (user != null) {
                 }
             }
         };
-        signup.setOnClickListener(new View.OnClickListener(){
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
+            public void onClick(View view) {
                 firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString())
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(!task.isSuccessful()){
+                                if (!task.isSuccessful()) {
                                     Toast.makeText(SignupActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
+                                } else {
                                     Toast.makeText(SignupActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
 
 
-
-
-                                    User u = new User(username.getText().toString(),email.getText().toString(),meter_id.getText().toString());
+                                    User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString());
                                     databaseReference.child("user").child(u.getMeter_id()).setValue(u);
                                     sendVerification();
                                     setResult(8);
@@ -91,7 +88,6 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
-
     public void sendVerification(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
