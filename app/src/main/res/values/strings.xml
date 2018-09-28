@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HydroBlock</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+</resources>

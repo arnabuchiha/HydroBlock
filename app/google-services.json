@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "864119633340",
+    "firebase_url": "https://hydroblock-db123.firebaseio.com",
+    "project_id": "hydroblock-db123",
+    "storage_bucket": "hydroblock-db123.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864119633340:android:90d0c889620f6e20",
+        "android_client_info": {
+          "package_name": "com.hydrocontract.hydroblock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864119633340-13ic683a2jqtlgegal6uh5es0291hkpb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hydrocontract.hydroblock",
+            "certificate_hash": "9935974b28b006ace2ec18ca89deab6845dd2d45"
+          }
+        },
+        {
+          "client_id": "864119633340-a19k0pgdujl0bojktlp3d7setd5hlnsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwLmpeEeQlfo-HaFSwV738H3789cK9UA8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864119633340-a19k0pgdujl0bojktlp3d7setd5hlnsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
