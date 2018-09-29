@@ -1,7 +1,6 @@
 package com.hydrocontract.hydroblock;
 /*Adapter for Sellers*/
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,9 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 /*seller*/
-import com.google.android.gms.common.internal.Objects;
 
 import java.util.List;
 
@@ -40,7 +37,10 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
     @Override
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         seller seller=sellerList.get(position);
-        holder.textViewSeller.setText(seller.getSeller());
+        holder.textViewUsername.setText(seller.getUsername());
+        holder.textQuantity.setText(seller.getQuantity()+" Litres");
+        int price=Integer.parseInt(seller.getQuantity())*5;
+        holder.textViewPrice.setText("Rs."+String.valueOf(price));
         holder.buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,14 +68,14 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
 
     class ProductViewHolder extends RecyclerView.ViewHolder{
 
-        TextView textViewSeller,textViewAddress,textViewSupply;
+        TextView textViewUsername,textQuantity,textViewPrice;
         Button buy;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
-            textViewSeller=itemView.findViewById(R.id.seller);
-            textViewAddress=itemView.findViewById(R.id.address);
-            textViewSupply=itemView.findViewById(R.id.supply);
+            textViewUsername=itemView.findViewById(R.id.username);
+            textQuantity=itemView.findViewById(R.id.quantity);
+            textViewPrice=itemView.findViewById(R.id.price);
             buy=itemView.findViewById(R.id.buy_button);
         }
     }
