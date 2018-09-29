@@ -13,9 +13,9 @@
         android:id="@+id/meter_id"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/email1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="262dp"
+        android:layout_marginBottom="20dp"
         android:background="#66000000"
         android:drawableLeft="@drawable/ic_action_user"
         android:ems="10"
@@ -26,22 +26,39 @@
         android:textColorHint="@android:color/background_light"
         android:textSize="16dp" />
 
+    <EditText
+        android:id="@+id/wallet_address"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/meter_id"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:background="#66000000"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:ems="10"
+        android:hint="Wallet Address"
+        android:inputType="textPersonName"
+        android:paddingLeft="5dp"
+        android:textColor="#aaaaaa"
+        android:textColorHint="@android:color/background_light"
+        android:textSize="16dp" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="120dp"
         android:layout_height="150dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/username"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         app:srcCompat="@drawable/icon" />
 
     <EditText
         android:id="@+id/username"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_alignParentTop="true"
+        android:layout_above="@+id/wallet_address"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="199dp"
+        android:layout_marginBottom="20dp"
         android:background="#66000000"
         android:drawableLeft="@drawable/ic_action_people"
         android:ems="10"
@@ -56,9 +73,9 @@
         android:id="@+id/email1"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/password1"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="229dp"
+        android:layout_marginBottom="20dp"
         android:background="#66000000"
         android:drawableLeft="@drawable/ic_action_email"
         android:ems="10"
@@ -73,9 +90,9 @@
         android:id="@+id/password1"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/cardView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="20dp"
         android:background="#66000000"
         android:drawableLeft="@drawable/ic_action_pass"
         android:ems="10"
@@ -86,15 +103,14 @@
         android:textColorHint="@android:color/background_light" />
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
-        android:id="@+id/cardView"
-        android:layout_marginBottom="31dp"
-        android:layout_above="@+id/textView2"
-        android:layout_centerHorizontal="true">
+        app:cardElevation="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -104,9 +120,9 @@
                 android:id="@+id/signup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="center"
                 android:layout_centerInParent="true"
                 android:text="Sign Up"
+                android:textAlignment="center"
                 android:textColor="#fff"
                 android:textSize="18sp" />
         </RelativeLayout>

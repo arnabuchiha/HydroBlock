@@ -21,10 +21,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 import static android.content.ContentValues.TAG;
 
 public class SignupActivity extends AppCompatActivity {
-    private EditText email, password,username,meter_id;
+    private EditText email, password,username,meter_id,wallet_address;
     private TextView signup;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -39,6 +45,7 @@ public class SignupActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password1);
         meter_id = findViewById(R.id.meter_id);
+        wallet_address=findViewById(R.id.wallet_address);
         signup = findViewById(R.id.signup1);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -75,9 +82,32 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(SignupActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                                    Retrofit retrofit = new Retrofit.Builder()
+                                            .baseUrl(Signup_API.BASE_URL)
+                                            .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                                            .build();
 
+                                    Signup_API api = retrofit.create(Signup_API.class);
+                                    Call<SignupResponse> call=api.getResponse(username.getText().toString(),email.getText().toString(),meter_id.getText().toString());
+                                    call.enqueue(new Callback<SignupResponse>() {
+                                        @Override
+                                        public void onResponse(Call<SignupResponse> call, Response<SignupResponse> response) {
 
-                                    User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString());
+                                            //In this point we got our hero list
+                                            //thats damn easy right ;)
+                                            SignupResponse signupResponse = response.body();
+                                            System.out.println(signupResponse.getWalletAddress());
+
+                                            //now we can do whatever we want with this list
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<SignupResponse> call, Throwable t) {
+                                            Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                    User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString(),"add");
                                     databaseReference.child("user").child(u.getMeter_id()).setValue(u);
                                     sendVerification();
                                     setResult(8);
