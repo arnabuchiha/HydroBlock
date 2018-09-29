@@ -30,7 +30,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import static android.content.ContentValues.TAG;
 
 public class SignupActivity extends AppCompatActivity {
-    private EditText email, password,username,meter_id,wallet_address;
+    private EditText email, password,username,meter_id;
+    Boolean success;
+    String wallet_address;
     private TextView signup;
     private FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
@@ -45,7 +47,6 @@ public class SignupActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password1);
         meter_id = findViewById(R.id.meter_id);
-        wallet_address=findViewById(R.id.wallet_address);
         signup = findViewById(R.id.signup1);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -82,6 +83,9 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                 } else {
                                     Toast.makeText(SignupActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                                    /***
+                                     * JSON Parse From API call
+                                     */
                                     Retrofit retrofit = new Retrofit.Builder()
                                             .baseUrl(Signup_API.BASE_URL)
                                             .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
@@ -97,7 +101,9 @@ public class SignupActivity extends AppCompatActivity {
                                             //thats damn easy right ;)
                                             SignupResponse signupResponse = response.body();
                                             System.out.println(signupResponse.getWalletAddress());
-
+                                            if(signupResponse.getSuccess())
+                                                wallet_address=signupResponse.getWalletAddress();
+                                            success=signupResponse.getSuccess();
                                             //now we can do whatever we want with this list
 
                                         }
@@ -107,11 +113,18 @@ public class SignupActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString(),"add");
-                                    databaseReference.child("user").child(u.getMeter_id()).setValue(u);
-                                    sendVerification();
-                                    setResult(8);
-                                    finish();
+                                    /**
+                                     * Firebase database writing
+                                     */
+                                    if(success) {
+                                        User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString(),wallet_address);
+                                        databaseReference.child("user").child(u.getMeter_id()).setValue(u);
+                                        sendVerification();
+                                        setResult(8);
+                                        finish();
+                                    }
+                                    else
+                                        Toast.makeText(SignupActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
