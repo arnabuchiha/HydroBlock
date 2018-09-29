@@ -19,6 +19,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.orhanobut.hawk.Hawk;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
+        Hawk.init(this).build();
         pd=new ProgressDialog(LoginActivity.this);
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(LoginActivity.this, navigate.class));
@@ -111,6 +118,19 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+                                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("user");
+                                    mDatabase.child(FirebaseAuth.getInstance().getUid()).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            User user=dataSnapshot.getValue(User.class);
+                                            Hawk.put("user",user);
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
                                     Intent intent = new Intent(LoginActivity.this, navigate.class);
                                     startActivity(intent);
                                     finish();

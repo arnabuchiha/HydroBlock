@@ -101,8 +101,14 @@ public class SignupActivity extends AppCompatActivity {
                                             //thats damn easy right ;)
                                             SignupResponse signupResponse = response.body();
                                             System.out.println(signupResponse.getWalletAddress());
-                                            if(signupResponse.getSuccess())
-                                                wallet_address=signupResponse.getWalletAddress();
+                                            wallet_address=signupResponse.getWalletAddress();
+                                            if(signupResponse.getSuccess()){
+                                                User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString(),wallet_address);
+                                                databaseReference.child("user").child(FirebaseAuth.getInstance().getUid()).setValue(u);
+                                                sendVerification();
+                                                setResult(8);
+                                                finish();
+                                            }
                                             success=signupResponse.getSuccess();
                                             //now we can do whatever we want with this list
 
@@ -113,18 +119,6 @@ public class SignupActivity extends AppCompatActivity {
                                             Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                                    /**
-                                     * Firebase database writing
-                                     */
-                                    if(success) {
-                                        User u = new User(username.getText().toString(), email.getText().toString(), meter_id.getText().toString(),wallet_address);
-                                        databaseReference.child("user").child(u.getMeter_id()).setValue(u);
-                                        sendVerification();
-                                        setResult(8);
-                                        finish();
-                                    }
-                                    else
-                                        Toast.makeText(SignupActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
