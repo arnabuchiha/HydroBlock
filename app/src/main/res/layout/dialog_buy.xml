@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="341dp"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+
+    <Button
+        android:id="@+id/close_button"
+        android:layout_width="78dp"
+        android:layout_height="30dp"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_below="@+id/textView"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="10dp"
+        android:text="CLOSE"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="78dp"
+        android:layout_height="30dp"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/textView"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/roundedbutton"
+        android:elevation="10dp"
+        android:text="CONFIRM"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="13sp" />
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Residential Address"
+        android:inputType="textPostalAddress" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="10dp"
+        android:text="Seller Wallet Address:"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/seller_address"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_below="@+id/editText"
+        android:layout_marginTop="10dp"
+        android:ellipsize="marquee"
+        android:gravity="right"
+        android:text="0XX123442165165165161"
+        android:singleLine="true"
+        android:textSize="16sp" />
+</RelativeLayout>
