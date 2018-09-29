@@ -3,6 +3,7 @@ package com.hydrocontract.hydroblock;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,6 +49,12 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_buy);
                 Button confirm=dialog.findViewById(R.id.confirm_button);
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        holder.escro_card.setVisibility(View.VISIBLE);
+                    }
+                });
                 Button close=dialog.findViewById(R.id.close_button);
                 close.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -70,6 +77,7 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
 
         TextView textViewUsername,textQuantity,textViewPrice;
         Button buy;
+        CardView escro_card;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
@@ -77,6 +85,7 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
             textQuantity=itemView.findViewById(R.id.quantity);
             textViewPrice=itemView.findViewById(R.id.price);
             buy=itemView.findViewById(R.id.buy_button);
+            escro_card=itemView.findViewById(R.id.escro_card);
         }
     }
 }

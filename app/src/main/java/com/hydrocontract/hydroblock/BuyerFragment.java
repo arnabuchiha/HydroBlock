@@ -66,7 +66,7 @@ public class BuyerFragment extends Fragment {
                             .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
                             .build();
                     sellerApi api1 = retrofit1.create(sellerApi.class);
-                    for(int i=8;i<count_int;i++) {
+                    for(int i=count_int-1;i>=0;i--) {
 
                         Call<sellerPojo> call1 = api1.getSellers(i);
                         call1.enqueue(new Callback<sellerPojo>() {

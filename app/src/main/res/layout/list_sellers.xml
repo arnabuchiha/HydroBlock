@@ -92,4 +92,55 @@
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/escro_card"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buy_button3"
+                android:layout_width="78dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:layout_toEndOf="@+id/textView5"
+                android:background="@drawable/roundedbutton"
+                android:elevation="10dp"
+                android:text="NO"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/buy_button4"
+                android:layout_width="78dp"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="58dp"
+                android:background="@drawable/roundedbutton"
+                android:elevation="10dp"
+                android:text="Yes"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Did you recieve the product?"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
 </LinearLayout>
