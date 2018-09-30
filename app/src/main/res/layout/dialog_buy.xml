@@ -8,7 +8,7 @@
         android:id="@+id/close_button"
         android:layout_width="78dp"
         android:layout_height="30dp"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_alignEnd="@+id/resident_address"
         android:layout_below="@+id/textView"
         android:layout_marginRight="40dp"
         android:layout_marginTop="20dp"
@@ -22,7 +22,7 @@
         android:id="@+id/confirm_button"
         android:layout_width="78dp"
         android:layout_height="30dp"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignStart="@+id/resident_address"
         android:layout_below="@+id/textView"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
@@ -33,7 +33,7 @@
         android:textSize="13sp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/resident_address"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -47,8 +47,8 @@
         android:id="@+id/textView"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/editText"
-        android:layout_below="@+id/editText"
+        android:layout_alignStart="@+id/resident_address"
+        android:layout_below="@+id/resident_address"
         android:layout_marginTop="10dp"
         android:text="Seller Wallet Address:"
         android:textSize="16sp" />
@@ -57,8 +57,8 @@
         android:id="@+id/seller_address"
         android:layout_width="158dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/resident_address"
+        android:layout_below="@+id/resident_address"
         android:layout_marginTop="10dp"
         android:ellipsize="marquee"
         android:gravity="right"

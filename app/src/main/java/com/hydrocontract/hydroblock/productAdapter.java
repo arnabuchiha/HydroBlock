@@ -10,10 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 /*seller*/
 
+import com.orhanobut.hawk.Hawk;
+
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductViewHolder> {
     private Context mcx;
@@ -49,10 +59,38 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.setContentView(R.layout.dialog_buy);
                 Button confirm=dialog.findViewById(R.id.confirm_button);
+                EditText resident_address=dialog.findViewById(R.id.resident_address);
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        holder.escro_card.setVisibility(View.VISIBLE);
+                        Hawk.init(mcx).build();
+                        Retrofit retrofit = new Retrofit.Builder()
+                                .baseUrl(buyApi.BASE_URL)
+                                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                                .build();
+                        buyApi api=retrofit.create(buyApi.class);
+                        User user =Hawk.get("user");
+                        Call<SuccessResponse> call=api.getResponse(seller.getAddress(),Integer.parseInt(seller.getQuantity()),user.getWallet_address(),resident_address.getText().toString());
+                        call.enqueue(new Callback<SuccessResponse>() {
+                            @Override
+                            public void onResponse(Call<SuccessResponse> call, Response<SuccessResponse> response) {
+
+                                SuccessResponse successResponse=response.body();
+                                if(successResponse.getSuccess())
+                                    Toast.makeText(mcx,"Ordered!!",Toast.LENGTH_LONG).show();
+
+                                holder.escro_card.setVisibility(View.VISIBLE);
+                                dialog.dismiss();
+                                //now we can do whatever we want with this list
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<SuccessResponse> call, Throwable t) {
+                                Toast.makeText(mcx, t.getMessage(), Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+                            }
+                        });
                     }
                 });
                 Button close=dialog.findViewById(R.id.close_button);
