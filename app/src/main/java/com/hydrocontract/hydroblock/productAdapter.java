@@ -50,8 +50,8 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
         seller seller=sellerList.get(position);
         holder.textViewUsername.setText(seller.getUsername());
         holder.textQuantity.setText(seller.getQuantity()+" Litres");
-        int price=Integer.parseInt(seller.getQuantity())*5;
-        holder.textViewPrice.setText("Rs."+String.valueOf(price));
+//        int price=Integer.parseInt(seller.getQuantity())*5;
+        holder.textViewPrice.setText("Rs."+seller.getQuantity());
         holder.buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,6 +80,19 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
                                     Toast.makeText(mcx,"Ordered!!",Toast.LENGTH_LONG).show();
 
                                 holder.escro_card.setVisibility(View.VISIBLE);
+                                holder.no_button.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        Toast.makeText(mcx,"You will get back your Ethereum soon!!",Toast.LENGTH_LONG);
+                                        holder.escro_card.setVisibility(View.GONE);
+                                    }
+                                });
+                                holder.yes_button.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        holder.escro_card.setVisibility(View.GONE);
+                                    }
+                                });
                                 dialog.dismiss();
                                 //now we can do whatever we want with this list
 
@@ -114,7 +127,7 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
     class ProductViewHolder extends RecyclerView.ViewHolder{
 
         TextView textViewUsername,textQuantity,textViewPrice;
-        Button buy;
+        Button buy,yes_button,no_button;
         CardView escro_card;
 
         public ProductViewHolder(View itemView) {
@@ -124,6 +137,8 @@ public class productAdapter extends RecyclerView.Adapter<productAdapter.ProductV
             textViewPrice=itemView.findViewById(R.id.price);
             buy=itemView.findViewById(R.id.buy_button);
             escro_card=itemView.findViewById(R.id.escro_card);
+            yes_button=itemView.findViewById(R.id.yes_button);
+            no_button=itemView.findViewById(R.id.no_button);
         }
     }
 }

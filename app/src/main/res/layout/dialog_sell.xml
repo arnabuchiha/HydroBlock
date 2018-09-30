@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/slider"
         android:layout_alignTop="@+id/textView4"
-        android:text="Rs.5 per litre"
+        android:text="1ETH per litre"
         android:textSize="16sp" />
 
 </RelativeLayout>

@@ -105,7 +105,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buy_button3"
+                android:id="@+id/no_button"
                 android:layout_width="78dp"
                 android:layout_height="30dp"
                 android:layout_alignParentBottom="true"
@@ -118,7 +118,7 @@
                 android:textSize="13sp" />
 
             <Button
-                android:id="@+id/buy_button4"
+                android:id="@+id/yes_button"
                 android:layout_width="78dp"
                 android:layout_height="30dp"
                 android:layout_alignParentBottom="true"
