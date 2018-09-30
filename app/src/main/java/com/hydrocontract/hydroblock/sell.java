@@ -78,8 +78,8 @@ public class sell extends Fragment {
                 if(Hawk.contains("user")){
                     Toast.makeText(getContext(),"No value",Toast.LENGTH_LONG).show();
                 }
-                System.out.println(user.getWaller_address());
-                Call<SuccessResponse> call=api.getResponse(String.valueOf(quantity),user.getWaller_address());
+                System.out.println(user.getWallet_address());
+                Call<SuccessResponse> call=api.getResponse(String.valueOf(quantity),user.getWallet_address());
                 call.enqueue(new Callback<SuccessResponse>() {
                     @Override
                     public void onResponse(Call<SuccessResponse> call, Response<SuccessResponse> response) {
