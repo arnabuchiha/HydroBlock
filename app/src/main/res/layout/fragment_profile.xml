@@ -119,6 +119,8 @@
                 android:layout_alignTop="@+id/wallet"
                 android:fontFamily="sans-serif-condensed"
                 android:text="0XX123456"
+                android:ellipsize="marquee"
+                android:singleLine="true"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 

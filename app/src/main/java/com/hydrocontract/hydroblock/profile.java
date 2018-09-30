@@ -12,12 +12,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.helper.DateAsXAxisLabelFormatter;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+import com.orhanobut.hawk.Hawk;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,10 +29,17 @@ import java.util.Date;
 
 public class profile extends Fragment {
     Button sign_out,view_stats;
+    TextView wallet_address,username;
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
+        Hawk.init(getContext()).build();
         sign_out=view.findViewById(R.id.sign_out);
+        wallet_address=view.findViewById(R.id.wallet_address);
+        username=view.findViewById(R.id.user_name);
+        User user=Hawk.get("user");
+        wallet_address.setText(user.getWallet_address());
+        username.setText(user.getUsername());
         sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,11 +90,14 @@ public class profile extends Fragment {
                 });
                 graph.addSeries(series);
                 graph.getGridLabelRenderer().setLabelFormatter(new DateAsXAxisLabelFormatter(getContext()));
-                graph.getGridLabelRenderer().setNumHorizontalLabels(6); // only 4 because of the space
+                graph.getGridLabelRenderer().setNumHorizontalLabels(3);
+                graph.getGridLabelRenderer().setHumanRounding(false);// only 4 because of the space
 
 // set manual x bounds to have nice steps
                 graph.getViewport().setMinX(d1.getTime());
                 graph.getViewport().setMaxX(d3.getTime());
+                graph.getViewport().setScalable(true);
+                graph.getViewport().setScalableY(true);
                 graph.getViewport().setXAxisBoundsManual(true);
 
 // as we use dates as labels, the human rounding to nice readable numbers

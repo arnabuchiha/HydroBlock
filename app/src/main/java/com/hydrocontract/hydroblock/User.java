@@ -15,12 +15,12 @@ public class User {
         this.wallet_address=waller_address;
     }
 
-    public String getWaller_address() {
+    public String getWallet_address() {
         return wallet_address;
     }
 
-    public void setWaller_address(String waller_address) {
-        this.wallet_address = waller_address;
+    public void setWallet_address(String wallet_address) {
+        this.wallet_address = wallet_address;
     }
 
     public String getMeter_id() {
