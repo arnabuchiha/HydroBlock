@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.jjoe64.graphview.GraphView;
@@ -26,10 +27,19 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 
 public class profile extends Fragment {
     Button sign_out,view_stats;
-    TextView wallet_address,username;
+    Boolean success;
+    String s1;
+    Double bal;
+    TextView wallet_address,username,wallet_balance;
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_profile, container, false);
@@ -37,9 +47,40 @@ public class profile extends Fragment {
         sign_out=view.findViewById(R.id.sign_out);
         wallet_address=view.findViewById(R.id.wallet_address);
         username=view.findViewById(R.id.user_name);
+        wallet_balance=view.findViewById(R.id.wallet_bal);
         User user=Hawk.get("user");
         wallet_address.setText(user.getWallet_address());
+        s1=user.getWallet_address();//to pass this in the profile field
         username.setText(user.getUsername());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(balanceApi.Base_Url)
+                .addConverterFactory(GsonConverterFactory.create()) //Here we are using the GsonConverterFactory to directly convert json data to object
+                .build();
+        balanceApi balanceApi= retrofit.create(balanceApi.class);
+        Call<balancePojo> call=balanceApi.getResponse(s1);
+        call.enqueue(new Callback<balancePojo>() {
+            @Override
+            public void onResponse(Call<balancePojo> call, Response<balancePojo> response) {
+                balancePojo balancePojo=response.body();
+                if(balancePojo.getSuccess())
+                {
+                    success=balancePojo.getSuccess();
+                    bal=balancePojo.getBalance();
+                    wallet_balance.setText(String.format("%.3f",bal)+" ETH");
+
+
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<balancePojo> call, Throwable t) {
+
+            }
+        });
+
+
         sign_out.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

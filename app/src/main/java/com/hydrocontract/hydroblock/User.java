@@ -8,11 +8,11 @@ public class User {
     public User(){
 
     }
-    public User(String username, String email,String meter_id,String waller_address){
+    public User(String username, String email,String meter_id,String wallet_address){
         this.email=email;
         this.username=username;
         this.meter_id=meter_id;
-        this.wallet_address=waller_address;
+        this.wallet_address=wallet_address;
     }
 
     public String getWallet_address() {
