@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,120 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <android.support.v7.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="173dp" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/sell_button"
+            android:layout_width="78dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="168dp"
+            android:background="@drawable/roundedbutton"
+            android:elevation="10dp"
+            android:text="New Sell"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="13sp" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_buyers"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:layout_margin="5dp"
+            android:visibility="gone"
+            app:cardElevation="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Kishor"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/quan_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/username"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Quantity:"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/address_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/username"
+                    android:layout_marginBottom="11dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Address:"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/supply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/quan_textView"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/nunito_semibold"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="Total Price:"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/price"
+                    android:layout_alignTop="@+id/quan_textView"
+                    android:text="5 Litres"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/supply"
+                    android:layout_centerHorizontal="true"
+                    android:text="0.002 ETH"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/quantity"
+                    android:layout_alignTop="@+id/address_textView"
+                    android:text="TextView"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
 </FrameLayout>
