@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 
 public interface balanceApi {
 
-    String Base_Url="http://13.126.150.180:3000/";
+    String Base_Url="Type the url";
     @FormUrlEncoded
     @POST("getBalance")
     Call<balancePojo> getResponse(@Field("wallet")String wallet);
