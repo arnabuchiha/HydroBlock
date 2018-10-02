@@ -7,7 +7,7 @@ import retrofit2.http.POST;
 
 public interface buyersApi {
 
-    String Base_Url="http://13.126.150.180:3000/";
+    String Base_Url="Url here";
     @POST("buyer/read/0")
     Call<BuyersResponse> getResponse();
 }
