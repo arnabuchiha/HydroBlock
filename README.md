@@ -55,11 +55,12 @@ Transparency
 <img src='https://image.ibb.co/kb3yKK/Screenshot_20180930_062017.jpg' width='150px'>
 
 </p>
-License
-----
 
-MIT
-
+## Creators
+* [Arnab Ray]
+* [Vinayak Shrivastava]
+* [Rajnish Raj Jayanti]
+* [Aman Gupta]
 
 **Free Software, Hell Yeah!**
 
@@ -73,5 +74,9 @@ MIT
    [Firebase]: <https://firebase.google.com/>
    [Android Studio]: <https://developer.android.com/studio/>
    [web3.js]: <https://web3js.readthedocs.io/en/1.0/>
+   [Arnab Ray]: <https://github.com/arnabuchiha>
+   [Vinayak Shrivastava]: <https://github.com/ItachiUchiha1998>
+   [Rajnish Raj Jayanti]: <https://github.com/ShadowRajnsih>
+   [Aman Gupta]: <https://github.com/aman304gupta>
 
 
