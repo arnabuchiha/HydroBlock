@@ -6,7 +6,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
 
 public interface sell_api {
-    String BASE_URL="http://13.126.150.180:3000/";
+    String BASE_URL="Url here";
     @FormUrlEncoded
     @POST("sell")
     Call<SuccessResponse> getResponse(@Field("supply")String supply,
