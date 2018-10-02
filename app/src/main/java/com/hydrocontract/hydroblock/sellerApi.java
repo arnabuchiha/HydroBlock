@@ -5,7 +5,7 @@ import retrofit2.http.Path;
 
 public interface sellerApi {
 
-    String Base_Url="http://13.126.150.180:3000/";
+    String Base_Url="Url here";
     @POST("seller/read/{id}")
     Call<sellerPojo> getSellers(@Path("id") int countId);
 }
